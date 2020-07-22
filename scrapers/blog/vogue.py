@@ -20,7 +20,7 @@ client = MongoClient(
     "mongodb+srv://Vasu:htccg321@cluster0-miow4.mongodb.net/flipkart-grid?retryWrites=true&w=majority")
 
 database = client["flipkart-grid"]
-collection = database["twitter_data"]
+collection = database["blogs"]
 
 options = webdriver.ChromeOptions()
 # options.add_argument(
