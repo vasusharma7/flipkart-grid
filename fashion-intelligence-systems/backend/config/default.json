@@ -1,0 +1,6 @@
+{
+  "jwtSecret": "TRUMP_IS_FOOLISH",
+  "mongoURI": "mongodb+srv://Vasu:htccg321@cluster0-miow4.mongodb.net/test?retryWrites=true&w=majority",
+  "adminUser": "admin",
+  "adminPass": "admin"
+}

@@ -1,2 +1,27 @@
-scrapers/twitter/data/
-scrapers/blog/chromedriver
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/fashion-intelligence-systems/node_modules
+/fashion-intelligence-systems/backend/node_modules
+/fashion-intelligence-systems/.pnp
+/fashion-intelligence-systems/.pnp.js
+
+# testing
+/fashion-intelligence-systems//coverage
+
+# production
+/fashion-intelligence-systems//build
+
+# misc
+/fashion-intelligence-systems/.DS_Store
+/fashion-intelligence-systems/.env.local
+/fashion-intelligence-systems/.env.development.local
+/fashion-intelligence-systems/.env.test.local
+/fashion-intelligence-systems/.env.production.local
+
+/fashion-intelligence-systems/npm-debug.log*
+/fashion-intelligence-systems/yarn-debug.log*
+/fashion-intelligence-systems/yarn-error.log*
+
+/scrapers/twitter/data/
+/scrapers/blog/chromedriver
