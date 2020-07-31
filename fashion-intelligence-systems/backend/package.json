@@ -23,6 +23,7 @@
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.9.1",
     "ngrok": "^3.2.7",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "react-notifications-component": "^2.4.0"
   }
 }

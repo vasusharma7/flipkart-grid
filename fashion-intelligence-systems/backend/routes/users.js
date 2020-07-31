@@ -12,7 +12,7 @@ const ap = config.get("adminPass");
 
 router.post("/auth", async (req, res) => {
   try {
-    const { username: email, pass } = req.body.body;
+    const { email, password } = req.body;
 
     User.findOne({ email }, async function (err, user) {
       if (err) {
@@ -27,7 +27,7 @@ router.post("/auth", async (req, res) => {
 
       console.log(user._doc.password);
 
-      const isMatch = await bcrypt.compare(pass, user._doc.password);
+      const isMatch = await bcrypt.compare(password, user._doc.password);
 
       if (!isMatch) {
         return res
@@ -64,7 +64,7 @@ router.post("/auth", async (req, res) => {
 
 router.post("/register", (req, res) => {
   console.log("inside register");
-  var data = req.body.body;
+  var data = req.body;
   var email = data.email;
   var password = data.password;
   User.findOne({ email }, (err, usr) => {
@@ -73,7 +73,7 @@ router.post("/register", (req, res) => {
     }
     if (usr) {
       console.log("User Exists");
-      res.status(400).json("User ALready Exist");
+      res.status(401).json("User ALready Exist");
     } else {
       bcrypt.genSalt(10, (err, salt) => {
         bcrypt.hash(password, salt, (err, hash) => {

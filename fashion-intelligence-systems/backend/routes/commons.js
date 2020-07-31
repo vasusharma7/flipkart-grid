@@ -6,3 +6,4 @@ const config = require("config");
 var fs = require("fs");
 const axios = require("axios");
 var path = require("path");
+module.exports = router;
