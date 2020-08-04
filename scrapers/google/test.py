@@ -21,7 +21,7 @@ time.sleep(3)
 
 elem1 = browser.find_elements_by_class_name('islir')
 print(elem1)
-#for elem in  elem1:
+# for elem in  elem1:
 num = 0
 for i in range(4):
     num = num + 1
@@ -40,9 +40,9 @@ for i in range(4):
             if src != None:
                 src = str(src)
                 print(src)
-                urllib.request.urlretrieve(src, os.path.join('downloads', 'image' + str(num) + '.jpg'))
+                urllib.request.urlretrieve(src, os.path.join(
+                    'downloads', 'image' + str(num) + '.jpg'))
             else:
                 raise TypeError
         except:
             print('failed for current url')
-
