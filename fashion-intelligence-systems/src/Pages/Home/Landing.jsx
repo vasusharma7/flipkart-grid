@@ -3,6 +3,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Notifications from "react-notification-system-redux";
 import Header from "./Header";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Blogs from "../Blogs.jsx";
 class Landing extends Component {
   render() {
     return (
@@ -11,6 +13,12 @@ class Landing extends Component {
           <Notifications notifications={this.props.notifications} />
         )}
         <Header />
+        <Switch>
+          <Route path="/home/blogs" component={() => <Blogs />} />
+          <Route path="/home">
+            <></>
+          </Route>
+        </Switch>
       </>
     );
   }

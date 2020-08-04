@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import SignIn from "./Pages/SignIn.jsx";
 import SignUp from "./Pages/SignUp.jsx";
 import Landing from "./Pages/Home/Landing.jsx";
+import Blogs from "./Pages/Blogs.jsx";
 function App() {
   return (
     <Provider store={store}>
@@ -19,10 +20,11 @@ function App() {
             <Route exact path="/register">
               <SignUp />
             </Route>
-            <Route exact path="/home">
-              <Landing />
-            </Route>
-            <Route path="/">
+            {/* <Route exact path="/blogs">
+              <Blogs />
+            </Route> */}
+            <Route path="/home" component={Landing} />
+            <Route exact path="/">
               <SignIn />
             </Route>
           </Switch>
