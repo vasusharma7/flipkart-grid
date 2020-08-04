@@ -67,7 +67,7 @@ export const register = data => {
       })
       .catch(err => {
         console.log("Register error", err);
-        if (err.response.status === 401) {
+        if (err && err.response && err.response.status === 401) {
           console.log("username exists");
           dispatch(usernameExists("User Exists"));
           dispatch(Notifications.error(unameNotificationOpts));
