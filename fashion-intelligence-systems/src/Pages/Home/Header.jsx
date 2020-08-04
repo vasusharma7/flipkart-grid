@@ -8,6 +8,7 @@ import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
+import { useHistory } from "react-router";
 import {
   MenuIcon,
   HomeOutlined as Home,
@@ -17,13 +18,11 @@ import {
 } from "@material-ui/icons/";
 import SearchIcon from "@material-ui/icons/Search";
 import AccountCircle from "@material-ui/icons/AccountCircle";
-import MailIcon from "@material-ui/icons/Mail";
-import NotificationsIcon from "@material-ui/icons/Notifications";
+import { Redirect } from "react-router-dom";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import * as action from "../../redux/loginRedux/loginAction";
 import { connect } from "react-redux";
 // import Notifications from "react-notification-system-redux";
-import { Redirect } from "react-router-dom";
 const useStyles = makeStyles(theme => ({
   grow: {
     flexGrow: 1,
@@ -91,6 +90,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 function Header(props) {
+  const history = useHistory();
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
@@ -142,7 +142,7 @@ function Header(props) {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
+      <MenuItem onClick={<Redirect to="/home/blogs" />}>
         <IconButton aria-label="show 4 new mails" color="inherit">
           {/* <Badge badgeContent={4} color="secondary"> */}
           <Panorama />
@@ -151,7 +151,11 @@ function Header(props) {
         <p>Blogs</p>
       </MenuItem>
       <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
+        <IconButton
+          aria-label="show 11 new notifications"
+          color="inherit"
+          onClick={() => history.push({ pathname: "/home/blogs" })}
+        >
           {/* <Badge badgeContent={11} color="secondary"> */}
           <Person />
           {/* </Badge> */}
@@ -223,6 +227,7 @@ function Header(props) {
               </Badge>
             </IconButton> */}
             <IconButton
+              onClick={() => history.push({ pathname: "/home/blogs" })}
               aria-label="Blogs"
               color="inherit"
               style={{ borderRadius: "10px" }}
