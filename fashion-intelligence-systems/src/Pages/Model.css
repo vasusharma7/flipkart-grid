@@ -1,0 +1,18 @@
+.model-area {
+  /*background-color: white;*/
+  background-image: url("../assets/modelresized.jpg");
+  background-repeat: no-repeat;
+  height: 600px;
+  width: 400px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*height: 100px;*/
+}
+.model-img {
+  width: 100%;
+}
+.model-area-shirt {
+  position: relative;
+  top: 85px;
+  left: 93px;
+}

@@ -142,7 +142,7 @@ function Header(props) {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem onClick={<Redirect to="/home/blogs" />}>
+      <MenuItem onClick={() => history.push({pathname: "/home/blogs"})}>
         <IconButton aria-label="show 4 new mails" color="inherit">
           {/* <Badge badgeContent={4} color="secondary"> */}
           <Panorama />
@@ -150,11 +150,10 @@ function Header(props) {
         </IconButton>
         <p>Blogs</p>
       </MenuItem>
-      <MenuItem>
+      <MenuItem onClick={() => history.push({ pathname: "/home/model" })} >
         <IconButton
           aria-label="show 11 new notifications"
           color="inherit"
-          onClick={() => history.push({ pathname: "/home/blogs" })}
         >
           {/* <Badge badgeContent={11} color="secondary"> */}
           <Person />
@@ -244,6 +243,7 @@ function Header(props) {
             </IconButton> */}
             <IconButton
               aria-label="Blogs"
+              onClick={() => history.push({pathname: "/home/model"})}
               color="inherit"
               style={{ borderRadius: "10px" }}
             >

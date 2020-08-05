@@ -4,7 +4,10 @@ import { connect } from "react-redux";
 import Notifications from "react-notification-system-redux";
 import Header from "./Header";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
 import Blogs from "../Blogs.jsx";
+import Model from "../Model.jsx";
+import { HTML5Backend } from 'react-dnd-html5-backend';
 class Landing extends Component {
   render() {
     return (
@@ -15,6 +18,7 @@ class Landing extends Component {
         <Header />
         <Switch>
           <Route path="/home/blogs" component={() => <Blogs />} />
+          <Route path="/home/model" component={() => <Model backend={HTML5Backend} />} />
           <Route path="/home">
             <></>
           </Route>
