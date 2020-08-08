@@ -1,6 +1,6 @@
 import { FETCH_FAILURE, FETCH_SUCCESS, LOADING } from "./dataActionTypes";
 import axios from "axios";
-export const registerRequest = () => {
+export const fetchRequest = () => {
   return {
     type: LOADING,
   };
@@ -19,15 +19,32 @@ export const fetchFailure = error => {
     error: error,
   };
 };
-
-export const register = data => {
-  return function (dispatch) {
-    dispatch(registerRequest());
-    axios
-      .post(`${global.config.backendURL}/api/commons/fetch/`)
+export const fetchCategory = category => {
+  // alert(1)
+  return async function (dispatch) {
+    dispatch(fetchRequest());
+    await axios
+      .get(`${global.config.backendURL}/api/commons/fetchCategory/${category}`)
       .then(async res => {
-        console.log(res);
-        dispatch(fetchSuccess(data));
+
+        dispatch(fetchSuccess(res.data));
+
+      })
+      .catch(err => {
+        console.log("fetch error", err);
+        dispatch(fetchFailure(err));
+      });
+  };
+};
+
+export const fetchData = data => {
+  return async function (dispatch) {
+    dispatch(fetchRequest());
+    await axios
+      .get(`${global.config.backendURL}/api/commons/fetch/`)
+      .then(async res => {
+
+        dispatch(fetchSuccess(res.data));
       })
       .catch(err => {
         console.log("fetch error", err);

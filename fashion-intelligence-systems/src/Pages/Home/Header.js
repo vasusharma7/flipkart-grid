@@ -23,6 +23,7 @@ import AccountCircle from "@material-ui/icons/AccountCircle";
 import { Redirect } from "react-router-dom";
 import MoreIcon from "@material-ui/icons/MoreVert";
 import * as action from "../../redux/loginRedux/loginAction";
+import * as actionData from "../../redux/dataRedux/dataAction";
 import { connect } from "react-redux";
 // import Notifications from "react-notification-system-redux";
 const useStyles = makeStyles(theme => ({
@@ -179,7 +180,12 @@ function Header(props) {
       </MenuItem>
     </Menu>
   );
-
+  const onTagsChange = (event, values) => {
+    // props.fetchCategory(values.title)
+    if(!values) 
+      history.push({pathname:`/home/`})
+    history.push({pathname:`/home/category/${values.title}`})
+  }
   return (
     <div className={classes.grow}>
       {props.loggedOut && <Redirect to="/" />}
@@ -218,6 +224,7 @@ function Header(props) {
                 { title: "jeans" },
                 { title: "dress" },
               ]}
+               onChange={onTagsChange}
               getOptionLabel={option => option.title}
               // style={{ width: 300 }}
               renderInput={params => (
@@ -328,6 +335,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     logout: data => dispatch(action.logout()),
+    fetchCategory: category => dispatch(actionData.fetchCategory(category)),
   };
 };
 
