@@ -5,7 +5,7 @@ const initalState = {
   randomData: {},
 };
 
-export const registerReducer = (state = initalState, action) => {
+export const dataReducer = (state = initalState, action) => {
   switch (action.type) {
     case LOADING:
       return {
@@ -28,4 +28,4 @@ export const registerReducer = (state = initalState, action) => {
       return state;
   }
 };
-export default registerReducer;
+export default dataReducer;

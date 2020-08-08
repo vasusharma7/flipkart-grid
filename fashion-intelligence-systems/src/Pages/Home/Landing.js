@@ -12,8 +12,9 @@ import {
 
 import Blogs from "../Blogs.jsx";
 import Model from "../Model.jsx";
-import Dashboard from "./dashboard";
+import Dashboard from "./dashboard.js";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import Category  from "./category";
 class Landing extends Component {
   render() {
     return (
@@ -28,6 +29,7 @@ class Landing extends Component {
             path="/home/model"
             component={() => <Model backend={HTML5Backend} />}
           />
+          <Route path="/home/category/:category" render={props => <Category {...props} />} />
           <Route path="/home/dashboard" component={() => <Dashboard />} />
           <Redirect from="/home" to="/home/dashboard" />
         </Switch>

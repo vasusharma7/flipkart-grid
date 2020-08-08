@@ -159,7 +159,7 @@ function SignIn(props) {
 }
 
 const mapStateToProps = state => {
-  console.log(state);
+  // console.log(state);
   return {
     registered: state.registerReducer.registered,
     loggedIn: state.loginReducer.loggedIn,

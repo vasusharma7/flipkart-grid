@@ -8,7 +8,7 @@ import { store } from "./redux/store";
 import { Provider } from "react-redux";
 import SignIn from "./Pages/SignIn.jsx";
 import SignUp from "./Pages/SignUp.jsx";
-import Landing from "./Pages/Home/Landing.jsx";
+import Landing from "./Pages/Home/Landing.js";
 import Blogs from "./Pages/Blogs.jsx";
 function App() {
   return (
