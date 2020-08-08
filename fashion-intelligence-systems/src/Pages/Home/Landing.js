@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Notifications from "react-notification-system-redux";
 import Header from "./Header";
+import Footer from "./footer.js";
 import {
   Redirect,
   BrowserRouter as Router,
@@ -33,6 +34,7 @@ class Landing extends Component {
           <Route path="/home/dashboard" component={() => <Dashboard />} />
           <Redirect from="/home" to="/home/dashboard" />
         </Switch>
+        <Footer/>
       </>
     );
   }
