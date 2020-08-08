@@ -5,6 +5,8 @@ import "./item.css";
 const Item = (props) => {
   const item_id = props.match.params.itemid;
   const [itemData, setItemData] = useState({});
+  const [itemColour, setItemColour] = useState("");
+  const [imag, setImg] = useState("");
   useEffect(() => {
     axios.get( `${global.config.backendURL}/api/items`,
       {
@@ -21,12 +23,37 @@ const Item = (props) => {
       });
   },[]);
   console.log(item_id);
+  const changeColor = () => {
+    console.log("here");
+    axios.get( `${global.config.backendURL}/api/items/change_colour`,
+      {
+        params: {
+          img: itemData.image,
+          incolour: itemData.colors[0], 
+          outcolour: "green"
+        }
+      })
+      .then(res => {
+        setImg(res.data);
+        setItemColour("green");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    return;
+  }
   return (
     <>
       <div class="item-area">
         <Grid container className="item-container">
           <Grid item md={6} className = "item-img-container">
+            {
+              itemColour == "" &&
             <img src={itemData.image} className="item-img"/>
+            }
+            { itemColour != "" &&
+              <img src={'data:image/jpeg;base64,' + imag} className="item-img"/>
+            }
           </Grid>
           <Grid item md={6} className="item-info-container">
             <Grid item md={2}/>
@@ -51,6 +78,23 @@ const Item = (props) => {
                 <span class='item-question'>Trendiness Score: </span>
                 <span class='item-ans'>{itemData.trending_score}</span>
               </div>
+              <Grid container>
+                <Grid item xs={4}>
+                  <div>
+                    <button onClick={changeColor}>Change Color</button>
+                  </div>
+                </Grid>
+                <Grid item xs={4}>
+                  <div>
+                    <button>Add to Model</button>
+                  </div>
+                </Grid>
+                <Grid item xs={4}>
+                  <div>
+                    <button>View Raw Clothing</button>
+                  </div>
+                </Grid>
+              </Grid>
             </Grid>
             <Grid item md={2}/>
           </Grid>

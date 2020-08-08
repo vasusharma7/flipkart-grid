@@ -38,6 +38,23 @@ router.get("/", async (req, res) => {
     "trending": false
   });
 });
+router.get("/change_colour", async (req, res) => {
+  const incolour = req.query['incolour'];
+  const outcolour = req.query['outcolour'];
+  const image_link = req.query['img'];
+  axios.post('http://localhost:4000/change_colour/',
+    {
+      img: image_link,
+      incolour: incolour,
+      outcolour: outcolour
+    })
+    .then(re => {
+      res.send(re.data);
+    })
+    .catch(err => {
+      console.log(err);
+    });
+});
 
 module.exports = router;
 
