@@ -10,6 +10,7 @@ from collections import deque
 import os
 from base64 import b64encode
 import sys
+from colourChange import *
 
 app = Flask(__name__)
 @app.route("/")
@@ -23,11 +24,13 @@ def readb64(uri):
     cv2.imwrite("temp/imageToSaveCvized.png", img);
     return img
 
-@app.route("/objpredict/", methods=['GET', 'POST'])
+@app.route("/change_colour/", methods=['GET', 'POST'])
 def objpredict():
-    img = request.form["img"]
-    cvimg = readb64(img)
+    #img = request.form["img"]
+    #cvimg = readb64(img)
+    changeColourAPI()
     return "image received"
 
 
-
+if __name__ == "__main__":
+    app.run(debug=True)
