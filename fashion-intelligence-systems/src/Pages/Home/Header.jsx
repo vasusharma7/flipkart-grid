@@ -1,4 +1,6 @@
 import React from "react";
+import { TextField } from "@material-ui/core";
+import Autocomplete from "@material-ui/lab/Autocomplete";
 import { fade, makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -53,9 +55,9 @@ const useStyles = makeStyles(theme => ({
     },
   },
   searchIcon: {
-    padding: theme.spacing(0, 2),
+    padding: theme.spacing(0, 0, 0, 2),
     height: "100%",
-    position: "absolute",
+    position: "relative",
     pointerEvents: "none",
     display: "flex",
     alignItems: "center",
@@ -142,7 +144,7 @@ function Header(props) {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem onClick={() => history.push({pathname: "/home/blogs"})}>
+      <MenuItem onClick={() => history.push({ pathname: "/home/blogs" })}>
         <IconButton aria-label="show 4 new mails" color="inherit">
           {/* <Badge badgeContent={4} color="secondary"> */}
           <Panorama />
@@ -150,11 +152,8 @@ function Header(props) {
         </IconButton>
         <p>Blogs</p>
       </MenuItem>
-      <MenuItem onClick={() => history.push({ pathname: "/home/model" })} >
-        <IconButton
-          aria-label="show 11 new notifications"
-          color="inherit"
-        >
+      <MenuItem onClick={() => history.push({ pathname: "/home/model" })}>
+        <IconButton aria-label="show 11 new notifications" color="inherit">
           {/* <Badge badgeContent={11} color="secondary"> */}
           <Person />
           {/* </Badge> */}
@@ -164,8 +163,8 @@ function Header(props) {
       <MenuItem>
         <IconButton aria-label="show 11 new notifications" color="inherit">
           <ShoppingCart />
-          <p>My Selections</p>
         </IconButton>
+        <p>My Selections</p>
       </MenuItem>
       <MenuItem onClick={handleProfileMenuOpen}>
         <IconButton
@@ -199,24 +198,48 @@ function Header(props) {
             className={classes.menuButton}
             color="inherit"
             aria-label="Fashion Intelligence"
+            onClick={() => history.push({ pathname: "/home" })}
           >
             <Home />
           </IconButton>
           <Typography className={classes.title} variant="h6" noWrap>
             Fashion Intelligence System
           </Typography>
+          <div className={classes.searchIcon}>
+            <SearchIcon />
+          </div>
           <div className={classes.search}>
-            <div className={classes.searchIcon}>
-              <SearchIcon />
-            </div>
-            <InputBase
+            <Autocomplete
+              inputProps={{ "aria-label": "search" }}
+              placeholder="Search…"
+              id="combo-box-demo"
+              options={[
+                { title: "shirt" },
+                { title: "jeans" },
+                { title: "dress" },
+              ]}
+              getOptionLabel={option => option.title}
+              // style={{ width: 300 }}
+              renderInput={params => (
+                <TextField
+                  classes={{
+                    root: classes.inputRoot,
+                    input: classes.inputInput,
+                  }}
+                  {...params}
+                  label="Search"
+                  variant="outlined"
+                />
+              )}
+            />
+            {/* <InputBase
               placeholder="Search…"
               classes={{
                 root: classes.inputRoot,
                 input: classes.inputInput,
               }}
               inputProps={{ "aria-label": "search" }}
-            />
+            /> */}
           </div>
           <div className={classes.grow} />
           <div className={classes.sectionDesktop}>
@@ -243,7 +266,7 @@ function Header(props) {
             </IconButton> */}
             <IconButton
               aria-label="Blogs"
-              onClick={() => history.push({pathname: "/home/model"})}
+              onClick={() => history.push({ pathname: "/home/model" })}
               color="inherit"
               style={{ borderRadius: "10px" }}
             >
@@ -259,7 +282,7 @@ function Header(props) {
             >
               <ShoppingCart />
               <Typography variant="h6" noWrap>
-                My Selections
+                Selections
               </Typography>
             </IconButton>
             <IconButton
