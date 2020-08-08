@@ -7,6 +7,7 @@ var fs = require("fs");
 const axios = require("axios");
 var path = require("path");
 const Blogs = require("../models/blogs.model");
+const Data = require("../models/data.model");
 
 router.get("/getBlogsData", async (req, res) => {
   //Vogue and Ape To Gentleman only till now
@@ -14,6 +15,13 @@ router.get("/getBlogsData", async (req, res) => {
     Blogs.find({ source: "Ape To GentleMan" }).then(resp2 => {
       res.json({ men: resp2, women: resp1 });
     });
+  });
+});
+
+router.get("/fetch", async (req, res) => {
+  var data = {};
+  await Data.find({ trending: false }).then(resp => {
+    return res.json(resp);
   });
 });
 module.exports = router;

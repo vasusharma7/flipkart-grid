@@ -1,4 +1,5 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.  
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
 # dependencies
 /fashion-intelligence-systems/node_modules
 /fashion-intelligence-systems/backend/node_modules
@@ -22,8 +23,5 @@
 /fashion-intelligence-systems/yarn-debug.log*
 /fashion-intelligence-systems/yarn-error.log*
 
-# Image data
 /scrapers/twitter/data/
 /scrapers/blog/chromedriver
-scrapers/nordstorm/data/
-scrapers/nordstorm/nordstorm | Nordstrom_files/
