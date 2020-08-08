@@ -57,17 +57,17 @@ def changeColour(inp_color):
         lower = np.array([25, 52, 72])
         upper = np.array([102, 255, 255])
 
-
     mask = cv2.inRange(hsv, lower, upper)
     output_img = im.copy()
 
 #output_img = cv2.bitwise_and(output_img, output_img, mask=mask)
     output_img[np.where(mask==0)] = [0]
-
     changed_img = output_img.copy()
-    changed_img[np.where(mask != 0)] = [255, 0, 0]
 
-    cv2.imshow('result', output_img)
+    if(inp_color != "none"):
+        changed_img[np.where(mask != 0)] = [255, 0, 0]
+
+    #cv2.imshow('result', output_img)
     cv2.waitKey(0)# This closes all open windows 
     cv2.imwrite(out_file_cut, output_img)
     cv2.imwrite(out_file_changed, changed_img)
@@ -165,12 +165,13 @@ def changeColourAPI(img, inp_colour, out_colour):
 
 #output_img = cv2.bitwise_and(output_img, output_img, mask=mask)
     output_img[np.where(mask==0)] = [0]
-
     changed_img = output_img.copy()
-    changed_img[np.where(mask != 0)] = out
 
-    cv2.imwrite(out_file_cut, output_img)
-    cv2.imwrite(out_file_changed, changed_img)
+    if(out_colour != "none"):
+        changed_img[np.where(mask != 0)] = out
+
+    #cv2.imwrite(out_file_cut, output_img)
+    #cv2.imwrite(out_file_changed, changed_img)
     _, im_arr = cv2.imencode('.jpg', changed_img)  # im_arr: image in Numpy one-dim array format.
     im_bytes = im_arr.tobytes()
     im_b64 = b64encode(im_bytes)

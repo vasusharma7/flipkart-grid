@@ -12,14 +12,12 @@ const Data = require("../models/data.model");
 router.get("/", async (req, res) => {
   const item_id = req.query['ID'];
   console.log(item_id);
-  /*
   await Data.findOne({_id:item_id}).then(resp => {
     console.log(resp);
     return res.json(resp);
   });
-  */
-
   // For testing
+  /*
   return res.json({
     "_id": "5f2e6ed401496c52217f9163",
     "image": "https://drive.google.com/uc?id=17D17lzq_QkH6S4SnZ2i86Hn1kwD-rKc5",
@@ -37,6 +35,7 @@ router.get("/", async (req, res) => {
     "non_trending_score": 0.9880748391151428,
     "trending": false
   });
+  */
 });
 router.get("/change_colour", async (req, res) => {
   const incolour = req.query['incolour'];
