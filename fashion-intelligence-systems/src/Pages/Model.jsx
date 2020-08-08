@@ -17,7 +17,11 @@ import {DndProvider} from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';
 import { Route, Switch } from "react-router-dom";
 
+import shirt from '../assets/sample_green_shirt.png';
+import trouser from '../assets/sample_blue_jeans.png';
+
 import DraggableTshirt from '../components/DraggableTshirt';
+import DraggableTrousers from '../components/DraggableTrousers';
 import DroppableModel from '../components/DroppableModel';
 
 import "./Model.css";
@@ -59,8 +63,16 @@ export default function Blogs() {
           <DroppableModel/>
         </Grid>
         <Grid item md={7}>
-          <h2> Tshirts </h2>
-          <DraggableTshirt/>
+          <Grid container>
+            <Grid item md={12}>
+              <h2> Tshirts </h2>
+              <DraggableTshirt src={shirt}/>
+            </Grid>
+            <Grid item md={12}>
+              <h2> Trousers </h2>
+              <DraggableTrousers src={trouser}/>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </DndProvider>

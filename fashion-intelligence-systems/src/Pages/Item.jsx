@@ -23,6 +23,24 @@ const Item = (props) => {
       });
   },[]);
   console.log(item_id);
+  const viewRawItem = () => {
+    axios.get( `${global.config.backendURL}/api/items/change_colour`,
+      {
+        params: {
+          img: itemData.image,
+          incolour: itemData.colors[0], 
+          outcolour: "none"
+        }
+      })
+      .then(res => {
+        setImg(res.data);
+        setItemColour("green");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+    return;
+  };
   const changeColor = () => {
     console.log("here");
     axios.get( `${global.config.backendURL}/api/items/change_colour`,
@@ -91,7 +109,7 @@ const Item = (props) => {
                 </Grid>
                 <Grid item xs={4}>
                   <div>
-                    <button>View Raw Clothing</button>
+                    <button onClick={viewRawItem}>View Raw Clothing</button>
                   </div>
                 </Grid>
               </Grid>

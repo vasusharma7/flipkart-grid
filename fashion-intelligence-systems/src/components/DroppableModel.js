@@ -6,13 +6,16 @@ import model from "../assets/modelresized.jpg";
 function DroppableModel(props) {
   const [clothes, setClothes] = useState({
     shirt: "",
-    pants: "",
+    trouser: "",
   });
 
   const addClothes = () => {
     console.log(cloth);
     if (cloth.item.type == "tshirt") {
       setClothes({ ...clothes, shirt: cloth.item.source });
+    }
+    if(cloth.item.type == 'trouser') {
+      setClothes({...clothes, trouser: cloth.item.source });
     }
   };
 
@@ -29,7 +32,7 @@ function DroppableModel(props) {
   };
 
   const [cloth, drop] = useDrop({
-    accept: ItemTypes.tshirt,
+    accept: [ItemTypes.tshirt, ItemTypes.trouser],
     drop: () => addClothes(),
     collect: monitor => ({
       isOver: !!monitor.isOver(),
