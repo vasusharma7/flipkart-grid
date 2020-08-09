@@ -1,7 +1,7 @@
 # Fashion Intelligence System 
 
 ## Introduction
-This fashion intelligent system was developed by Vasu Sharma and Pranav Joglekar as part of Flipkart Data Grind 2020. The aim of this system is to help fashion retailers in designing and identifying trend-setting and best selling products.
+This fashion intelligent system was developed by Vasu Sharma and Pranav Joglekar as part of Flipkart Data Grid 2020. The aim of this system is to help fashion retailers in designing and identifying trend-setting and best selling products.
 
 ## Design
 This system is broken down into 3 important parts:
