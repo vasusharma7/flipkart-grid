@@ -1,5 +1,9 @@
 .model-sample-trouser-img {
   height: 150px;
+  padding: 2px 2px 2px 2px;
+  background-color: white;
+  border: 2px solid red;
+  border-radius: 5px;
 }
 .model-sample-tshirt-img {
   height: 100px;
@@ -26,7 +30,14 @@
 }
 .model-area-trouser {
   position: absolute;
-  height: 314px;
-  top: 230px;
-  left: 101px;
+  height: 280px;
+  top: 264px;
+  left: 147px;
+}
+
+.model-area-short {
+  position: absolute;
+  height: 163px;
+  top: 258px;
+  left: 140px;
 }

@@ -4,12 +4,12 @@ import numpy as np
 #img = cv2.imread("./example_images/red_tshirt.jpg", cv2.IMREAD_COLOR)
 inp_color = "blue"
 inp_dir = "./example_images/"
-inp_name = "blue_tshirt"
+inp_name = "black_short"
 inp_extension = ".jpg"
 
 inp_file = inp_dir + inp_name + inp_extension
 
-out_color = "red" # None to just crop the picture
+out_color = "none" # None to just crop the picture
 out_dir = "./output/"
 out_name = inp_name + "_out"
 out_extension = inp_extension
@@ -62,7 +62,8 @@ output_img = im.copy()
 output_img[np.where(mask==0)] = [0]
 
 changed_img = output_img.copy()
-changed_img[np.where(mask != 0)] = [255, 0, 0]
+if(out_color != "none"):
+    changed_img[np.where(mask != 0)] = [255, 0, 0]
 
 cv2.imshow('result', output_img)
 cv2.imshow('result', hsv)

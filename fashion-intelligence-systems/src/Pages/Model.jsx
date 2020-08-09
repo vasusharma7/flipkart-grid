@@ -20,9 +20,12 @@ import { Route, Switch } from "react-router-dom";
 import shirt from '../assets/sample_green_shirt.png';
 import shirt2 from '../assets/shirt2.png';
 import trouser from '../assets/sample_blue_jeans.png';
+import trouser2 from '../assets/trousers2.png';
+import trouser3 from '../assets/trousers3.png';
 
 import DraggableTshirt from '../components/DraggableTshirt';
 import DraggableTrousers from '../components/DraggableTrousers';
+import DraggableShorts from '../components/DraggableShorts';
 import DroppableModel from '../components/DroppableModel';
 
 import "./Model.css";
@@ -58,20 +61,28 @@ export default function Model() {
   const classes = useStyles();
   const history = useHistory();
   const tshirts = [shirt, shirt2];
-  const trousers = [trouser, ];
+  const trousers = [trouser2, trouser];
+  const shorts = [trouser3];
   const renderTshirts = () => {
     var tshirtsElem = [];
     tshirts.forEach((tshirt) => {
-      tshirtsElem.push(<DraggableTshirt src={tshirt}/>);
+      tshirtsElem.push(<Grid item xs={4}> <DraggableTshirt src={tshirt}/> </Grid>);
     });
     return tshirtsElem;
   }
   const renderTrousers = () => {
     var trousersElem = [];
     trousers.forEach((trouser) => {
-      trousersElem.push(<Grid item md={2}> <DraggableTrousers src={trouser} /> </Grid>);
+      trousersElem.push(<Grid item xs={4}> <DraggableTrousers src={trouser} /> </Grid>);
     });
     return trousersElem;
+  };
+  const renderShorts = () => {
+    var shortsElem = [];
+    shorts.forEach((short) => {
+      shortsElem.push(<Grid item xs={4}> <DraggableShorts src={short} /> </Grid>);
+    });
+    return shortsElem;
   };
   return (
     <DndProvider backend={HTML5Backend}>
@@ -81,16 +92,30 @@ export default function Model() {
         </Grid>
         <Grid item md={7}>
           <Grid container>
-            <Grid item md={12}>
-              <h2> Tshirts </h2>
+            <Grid item xs={2}/>
+            <Grid item xs={8}>
               <Grid container>
-                {renderTshirts()}
+                <Grid item md={12}>
+                  <Typography><h2> Tshirts </h2></Typography>
+                  <Grid container spacing = {4}>
+                    {renderTshirts()}
+                  </Grid>
+                </Grid>
+                <Grid item md={12}>
+                  <h2> Trousers </h2>
+                  <Grid container>
+                    {renderTrousers()}
+                  </Grid>
+                </Grid>
+                <Grid item md={12}>
+                  <h2> Shorts </h2>
+                  <Grid container>
+                    {renderShorts()}
+                  </Grid>
+                </Grid>
               </Grid>
             </Grid>
-            <Grid item md={12}>
-              <h2> Trousers </h2>
-              {renderTrousers()}
-            </Grid>
+            <Grid item xs={2}/>
           </Grid>
         </Grid>
       </Grid>
