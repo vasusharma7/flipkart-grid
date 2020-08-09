@@ -17,7 +17,12 @@ import {DndProvider} from 'react-dnd';
 import {HTML5Backend} from 'react-dnd-html5-backend';
 import { Route, Switch } from "react-router-dom";
 
+import shirt from '../assets/sample_green_shirt.png';
+import shirt2 from '../assets/shirt2.png';
+import trouser from '../assets/sample_blue_jeans.png';
+
 import DraggableTshirt from '../components/DraggableTshirt';
+import DraggableTrousers from '../components/DraggableTrousers';
 import DroppableModel from '../components/DroppableModel';
 
 import "./Model.css";
@@ -49,9 +54,25 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export default function Blogs() {
+export default function Model() {
   const classes = useStyles();
   const history = useHistory();
+  const tshirts = [shirt, shirt2];
+  const trousers = [trouser, ];
+  const renderTshirts = () => {
+    var tshirtsElem = [];
+    tshirts.forEach((tshirt) => {
+      tshirtsElem.push(<DraggableTshirt src={tshirt}/>);
+    });
+    return tshirtsElem;
+  }
+  const renderTrousers = () => {
+    var trousersElem = [];
+    trousers.forEach((trouser) => {
+      trousersElem.push(<Grid item md={2}> <DraggableTrousers src={trouser} /> </Grid>);
+    });
+    return trousersElem;
+  };
   return (
     <DndProvider backend={HTML5Backend}>
       <Grid container>
@@ -59,8 +80,18 @@ export default function Blogs() {
           <DroppableModel/>
         </Grid>
         <Grid item md={7}>
-          <h2> Tshirts </h2>
-          <DraggableTshirt/>
+          <Grid container>
+            <Grid item md={12}>
+              <h2> Tshirts </h2>
+              <Grid container>
+                {renderTshirts()}
+              </Grid>
+            </Grid>
+            <Grid item md={12}>
+              <h2> Trousers </h2>
+              {renderTrousers()}
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </DndProvider>

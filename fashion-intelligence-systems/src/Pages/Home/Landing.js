@@ -13,7 +13,8 @@ import {
 
 import Blogs from "../Blogs.jsx";
 import Model from "../Model.jsx";
-import Dashboard from "./dashboard.js";
+import Dashboard from "./dashboard";
+import Item from '../Item.jsx';
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Category  from "./category";
 class Landing extends Component {
@@ -35,6 +36,7 @@ class Landing extends Component {
         )}
         <Header />
         <Switch>
+          <Route path="/home/item/:itemid" component={Item} />
           <Route path="/home/blogs" component={() => <Blogs />} />
           <Route
             path="/home/model"

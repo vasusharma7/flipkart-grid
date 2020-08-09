@@ -2,14 +2,14 @@ import cv2
 import numpy as np
 
 #img = cv2.imread("./example_images/red_tshirt.jpg", cv2.IMREAD_COLOR)
-inp_color = "red"
+inp_color = "blue"
 inp_dir = "./example_images/"
-inp_name = "red_tshirt"
+inp_name = "blue_tshirt"
 inp_extension = ".jpg"
 
 inp_file = inp_dir + inp_name + inp_extension
 
-out_color = "blue" # None to just crop the picture
+out_color = "red" # None to just crop the picture
 out_dir = "./output/"
 out_name = inp_name + "_out"
 out_extension = inp_extension
@@ -43,6 +43,18 @@ if(inp_color == "red"):
     lower = np.array([155,25,0])
     upper = np.array([179,255,255])
 
+if(inp_color == "black"):
+    lower = np.array([0,0,0])
+    upper = np.array([180, 255, 50])
+
+if(inp_color == "blue"):
+    lower = np.array([94, 80, 2])
+    upper = np.array([126, 255, 255])
+
+if(inp_color == "green"):
+    lower = np.array([25, 52, 72])
+    upper = np.array([102, 255, 255])
+
 mask = cv2.inRange(hsv, lower, upper)
 output_img = im.copy()
 
@@ -53,6 +65,7 @@ changed_img = output_img.copy()
 changed_img[np.where(mask != 0)] = [255, 0, 0]
 
 cv2.imshow('result', output_img)
+cv2.imshow('result', hsv)
 cv2.waitKey(0)# This closes all open windows 
 cv2.imwrite(out_file_cut, output_img)
 cv2.imwrite(out_file_changed, changed_img)

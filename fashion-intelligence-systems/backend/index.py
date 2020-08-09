@@ -26,11 +26,14 @@ def readb64(uri):
 
 @app.route("/change_colour/", methods=['GET', 'POST'])
 def objpredict():
-    #img = request.form["img"]
+    img = request.json["img"]
+    incolour = request.json["incolour"]
+    outcolour = request.json["outcolour"]
+    print(img);
     #cvimg = readb64(img)
-    changeColourAPI()
-    return "image received"
+    res = changeColourAPI(img, incolour, outcolour)
+    return res
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, port=4000)

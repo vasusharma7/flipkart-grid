@@ -1,0 +1,38 @@
+.item-img {
+  width: 400px;
+}
+.item-container {
+  margin-top: 100px;
+  border: 2px solid white;
+}
+.item-img-container {
+  text-align: center;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+.item-info-container {
+  margin-top: 10px;
+  padding-top: 50px;
+  /*text-align: center;*/
+}
+
+.item-info-div {
+  font-size: 30px;
+}
+.item-area {
+  margin-left: 100px;
+  margin-right: 100px;
+}
+.item-ans {
+  font-size: 20px;
+}
+.item-buttons {
+  margin-top: 80px;
+}
+.item-change-colour-btn {
+  width: 100%;
+}
+.gutter {
+  display: block;
+  height: 70px;
+}

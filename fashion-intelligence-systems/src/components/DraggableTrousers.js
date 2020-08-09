@@ -1,12 +1,12 @@
 import React from 'react'
 import { ItemTypes } from './Constants'
 import { useDrag } from 'react-dnd'
-import shirt from '../assets/sample_green_shirt.png';
+import trousers from '../assets/sample_blue_jeans.png';
 
-const DraggableTshirt = (props) => {
+const DraggableTrousers = (props) => {
     const [{isDragging}, drag] = useDrag({
-          item: { type: ItemTypes.tshirt, 
-                  source: props.src 
+          item: { type: ItemTypes.trouser, 
+                  source: props.src
                 },
           collect: monitor => ({
                   isDragging: !!monitor.isDragging(),
@@ -20,8 +20,8 @@ const DraggableTshirt = (props) => {
                             opacity: isDragging ? 0.5 : 1,
                           }}
                 >
-                  <img src={props.src} className="model-sample-tshirt-img"/>
+                  <img src={props.src} className="model-sample-trouser-img"/>
                 </div>
         )
 }
-export default DraggableTshirt;
+export default DraggableTrousers;
