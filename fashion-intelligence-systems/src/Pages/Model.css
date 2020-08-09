@@ -1,6 +1,9 @@
 .model-sample-trouser-img {
   height: 150px;
 }
+.model-sample-tshirt-img {
+  height: 100px;
+}
 
 .model-area {
   /*background-color: white;*/
@@ -17,8 +20,9 @@
 }
 .model-area-shirt {
   position: absolute;
+  height: 225px;
   top: 85px;
-  left: 93px;
+  left: 120px;
 }
 .model-area-trouser {
   position: absolute;

@@ -23,3 +23,16 @@
   margin-left: 100px;
   margin-right: 100px;
 }
+.item-ans {
+  font-size: 20px;
+}
+.item-buttons {
+  margin-top: 80px;
+}
+.item-change-colour-btn {
+  width: 100%;
+}
+.gutter {
+  display: block;
+  height: 70px;
+}

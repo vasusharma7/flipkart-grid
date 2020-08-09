@@ -1,5 +1,5 @@
 import React, {Component, useState, useEffect} from 'react';
-import {Grid} from '@material-ui/core';
+import {Grid, Button, Select, MenuItem, Typography} from '@material-ui/core';
 import axios from 'axios';
 import "./item.css";
 const Item = (props) => {
@@ -7,6 +7,7 @@ const Item = (props) => {
   const [itemData, setItemData] = useState({});
   const [itemColour, setItemColour] = useState("");
   const [imag, setImg] = useState("");
+  const [colour, setColour] = useState("");
   useEffect(() => {
     axios.get( `${global.config.backendURL}/api/items`,
       {
@@ -41,24 +42,28 @@ const Item = (props) => {
       });
     return;
   };
-  const changeColor = () => {
+  const changeColor = (out_colour) => {
     console.log("here");
     axios.get( `${global.config.backendURL}/api/items/change_colour`,
       {
         params: {
           img: itemData.image,
           incolour: itemData.colors[0], 
-          outcolour: "green"
+          outcolour: out_colour
         }
       })
       .then(res => {
         setImg(res.data);
-        setItemColour("green");
+        setItemColour(out_colour);
       })
       .catch(err => {
         console.log(err);
       });
     return;
+  }
+  const handleColourChange = (e) => {
+    console.log(e.target.value);
+    changeColor(e.target.value);
   }
   return (
     <>
@@ -77,42 +82,99 @@ const Item = (props) => {
             <Grid item md={2}/>
             <Grid item md={8}>
               <div className="item-info-div">
-                <span class='item-question'>Site: </span>
-                <span class='item-ans'>{itemData.site}</span>
-              </div>
-              <div className="item-info-div">
-                <span class='item-question'>Type: </span>
-                <span class='item-ans'>{itemData.clothing}</span>
-              </div>
-              <div className="item-info-div">
-                <span class='item-question'>Color: </span>
-                <span class='item-ans'>{itemData.colors}</span>
-              </div>
-              <div className="item-info-div">
-                <span class='item-question'>Status: </span>
-                <span class='item-ans'>{itemData.type}</span>
-              </div>
-              <div className="item-info-div">
-                <span class='item-question'>Trendiness Score: </span>
-                <span class='item-ans'>{itemData.trending_score}</span>
-              </div>
-              <Grid container>
-                <Grid item xs={4}>
-                  <div>
-                    <button onClick={changeColor}>Change Color</button>
-                  </div>
+                <Typography>
+                <Grid container>
+                  <Grid item xs={4}>
+                    <span class='item-question'>site: </span>
+                  </Grid>
+                  <Grid item xs={8}>
+                    <span class='item-ans'>{itemData.site}</span>
+                  </Grid>
                 </Grid>
-                <Grid item xs={4}>
-                  <div>
-                    <button>Add to Model</button>
-                  </div>
+                </Typography>
+              </div>
+              <div className="item-info-div">
+                <Typography>
+                  <Grid container>
+                    <Grid item xs={4}>
+                      <span class='item-question'>Type: </span>
+                    </Grid>
+                    <Grid item xs={8}>
+                      <span class='item-ans'>{itemData.clothing}</span>
+                    </Grid>
+                  </Grid>
+                </Typography>
+              </div>
+              <div className="item-info-div">
+                <Typography>
+                  <Grid container>
+                    <Grid item xs={4}>
+                      <span class='item-question'>Color: </span>
+                    </Grid>
+                    <Grid item xs={8}>
+                      <span class='item-ans'>{itemData.colors}</span>
+                    </Grid>
+                  </Grid>
+                </Typography>
+              </div>
+              <div className="item-info-div">
+                <Typography>
+                  <Grid container>
+                    <Grid item xs={4}>
+                      <span class='item-question'>Status: </span>
+                    </Grid>
+                    <Grid item xs={8}>
+                      <span class='item-ans'>{itemData.type}</span>
+                    </Grid>
+                  </Grid>
+                </Typography>
+              </div>
+              <div className="item-info-div">
+                <Typography>
+                  <Grid container>
+                    <Grid item xs={4}>
+                      <span class='item-question'>Trendiness Score: </span>
+                    </Grid>
+                    <Grid item xs={8}>
+                      <span class='item-ans'>{itemData.trending_score}</span>
+                    </Grid>
+                  </Grid>
+                </Typography>
+              </div>
+              <div className="item-buttons">
+                <Grid container>
+                  <Grid item xs={6}>
+                    <Typography>
+                      Colour:
+                    </Typography>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <Select labelId="demo-simple-select-label"
+                            id="demo-simple-select"
+                            value={itemColour}
+                            label="Change Color"
+                            className="item-change-colour-btn"
+                      onChange={(e) => handleColourChange(e)}
+                    >
+                      <MenuItem value={"red"}>Red</MenuItem>
+                      <MenuItem value={"green"}>Green</MenuItem>
+                      <MenuItem value={"blue"}>Blue</MenuItem>
+                      <MenuItem value={"black"}>Black</MenuItem>
+                    </Select>
+                  </Grid>
+                  <span className='gutter'/>
+                  <Grid item xs={6}>
+                    <div>
+                      <Button>Add to Model</Button>
+                    </div>
+                  </Grid>
+                  <Grid item xs={6}>
+                    <div>
+                      <Button onClick={viewRawItem}>View Raw Clothing</Button>
+                    </div>
+                  </Grid>
                 </Grid>
-                <Grid item xs={4}>
-                  <div>
-                    <button onClick={viewRawItem}>View Raw Clothing</button>
-                  </div>
-                </Grid>
-              </Grid>
+              </div>
             </Grid>
             <Grid item md={2}/>
           </Grid>

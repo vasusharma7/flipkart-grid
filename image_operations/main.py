@@ -2,14 +2,14 @@ import cv2
 import numpy as np
 
 #img = cv2.imread("./example_images/red_tshirt.jpg", cv2.IMREAD_COLOR)
-inp_color = "black"
+inp_color = "blue"
 inp_dir = "./example_images/"
-inp_name = "blackmens"
+inp_name = "blue_tshirt"
 inp_extension = ".jpg"
 
 inp_file = inp_dir + inp_name + inp_extension
 
-out_color = "blue" # None to just crop the picture
+out_color = "red" # None to just crop the picture
 out_dir = "./output/"
 out_name = inp_name + "_out"
 out_extension = inp_extension

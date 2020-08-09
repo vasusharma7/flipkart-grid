@@ -112,7 +112,7 @@ def changeColourAPI(img, inp_colour, out_colour):
 
     req = urllib.request.urlopen(img)
     arr = np.asarray(bytearray(req.read()), dtype=np.uint8)
-    im = cv2.imdecode(arr, -1) 
+    im = cv2.imdecode(arr, -1)
 
     hsv = cv2.cvtColor(im, cv2.COLOR_BGR2HSV)
 
@@ -172,7 +172,7 @@ def changeColourAPI(img, inp_colour, out_colour):
 
     #cv2.imwrite(out_file_cut, output_img)
     #cv2.imwrite(out_file_changed, changed_img)
-    _, im_arr = cv2.imencode('.jpg', changed_img)  # im_arr: image in Numpy one-dim array format.
+    _, im_arr = cv2.imencode('.png', changed_img)  # im_arr: image in Numpy one-dim array format.
     im_bytes = im_arr.tobytes()
     im_b64 = b64encode(im_bytes)
     return im_b64;

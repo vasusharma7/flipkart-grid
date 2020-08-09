@@ -20,7 +20,7 @@ const DraggableTshirt = (props) => {
                             opacity: isDragging ? 0.5 : 1,
                           }}
                 >
-                  <img src={props.src} />
+                  <img src={props.src} className="model-sample-tshirt-img"/>
                 </div>
         )
 }
