@@ -165,7 +165,7 @@ const Item = (props) => {
                   <span className='gutter'/>
                   <Grid item xs={6}>
                     <div>
-                      <Button>Add to Model</Button>
+                      <Button onClick = {() => props.history.push("/home/model")}>Add to Model</Button>
                     </div>
                   </Grid>
                   <Grid item xs={6}>

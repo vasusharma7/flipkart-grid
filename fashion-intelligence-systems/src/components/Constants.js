@@ -1,4 +1,5 @@
 export const ItemTypes = {
     tshirt: 'tshirt',
-    trouser: 'trouser'
+    trouser: 'trouser',
+    short: 'short'
 }

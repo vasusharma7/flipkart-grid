@@ -7,6 +7,7 @@ function DroppableModel(props) {
   const [clothes, setClothes] = useState({
     shirt: "",
     trouser: "",
+    short: '',
   });
 
   const addClothes = () => {
@@ -15,7 +16,10 @@ function DroppableModel(props) {
       setClothes({ ...clothes, shirt: cloth.item.source });
     }
     if(cloth.item.type == 'trouser') {
-      setClothes({...clothes, trouser: cloth.item.source });
+      setClothes({...clothes, trouser: cloth.item.source, short: '' });
+    }
+    if(cloth.item.type == 'short') {
+      setClothes({...clothes, short: cloth.item.source, trouser: '' });
     }
   };
 
@@ -32,7 +36,7 @@ function DroppableModel(props) {
   };
 
   const [cloth, drop] = useDrop({
-    accept: [ItemTypes.tshirt, ItemTypes.trouser],
+    accept: [ItemTypes.tshirt, ItemTypes.trouser, ItemTypes.short],
     drop: () => addClothes(),
     collect: monitor => ({
       isOver: !!monitor.isOver(),
