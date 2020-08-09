@@ -71,21 +71,6 @@ export class Category extends Component {
     console.log(this.props);
     return (
       <>
-        {this.props.loading ? (
-          <div style={{}}>
-            <img
-              style={{
-                width: "100%",
-                height: "100%",
-                overflow: "hidden",
-              }}
-              alt="loader"
-              src="https://icon-library.com/images/loading-icon-animated-gif/loading-icon-animated-gif-19.jpg"
-            />
-          </div>
-        ) : (
-          <></>
-        )}
         <Grid
           container
           className={classes.cardLayout}
