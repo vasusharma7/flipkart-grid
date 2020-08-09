@@ -1,7 +1,7 @@
 # Fashion Intelligence System 
 
 ## Introduction
-This fashion intelligent system was developed by Vasu Sharma and Pranav Joglekar as part of Flipkart Data Grind 2020. The aim of this system is to help fashion retailers in designing and identifying trend-setting and best selling products.
+This fashion intelligent system was developed by Vasu Sharma and Pranav Joglekar as part of Flipkart Data Grid 2020. The aim of this system is to help fashion retailers in designing and identifying trend-setting and best selling products.
 
 ## Design
 This system is broken down into 3 important parts:
@@ -32,3 +32,20 @@ This system is broken down into 3 important parts:
 Scraped Data(till today): https://drive.google.com/drive/u/1/folders/134GDKE7i0MdBYcIyab3mKH6LdxFl-ci0
 
 Processed Scraped Data: https://drive.google.com/drive/u/1/folders/134GDKE7i0MdBYcIyab3mKH6LdxFl-ci0
+
+## Model Files
+
+Model for predicting Trendiness: https://drive.google.com/file/d/1092MDfexBLnap2q9ijxvEG-GmBfw9my2/view?usp=sharing
+
+Model for predicting Color and Type of garment from image : https://drive.google.com/file/d/1092MDfexBLnap2q9ijxvEG-GmBfw9my2/view?usp=sharing
+
+
+(Supporting Binary File ): https://drive.google.com/file/d/1-6_5lyHXmDrhEvjJpdQh8jjyXoX-Gvv2/view?usp=sharing
+
+## Colab Notebooks
+
+Visit Here - 
+https://github.com/vasusharma7/flipkart-grid/tree/master/Colab%20Notebooks
+
+
+
