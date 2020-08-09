@@ -38,9 +38,12 @@ Processed Scraped Data: https://drive.google.com/drive/u/1/folders/134GDKE7i0MdB
 Model for predicting Trendiness: https://drive.google.com/file/d/1092MDfexBLnap2q9ijxvEG-GmBfw9my2/view?usp=sharing
 
 Model for predicting Color and Type of garment from image : https://drive.google.com/file/d/1092MDfexBLnap2q9ijxvEG-GmBfw9my2/view?usp=sharing
+
+
 (Supporting Binary File ): https://drive.google.com/file/d/1-6_5lyHXmDrhEvjJpdQh8jjyXoX-Gvv2/view?usp=sharing
 
 ## Colab Notebooks
+
 Visit Here - 
 https://github.com/vasusharma7/flipkart-grid/tree/master/Colab%20Notebooks
 
