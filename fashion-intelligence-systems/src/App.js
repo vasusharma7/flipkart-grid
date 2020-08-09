@@ -10,17 +10,7 @@ import SignIn from "./Pages/SignIn.jsx";
 import SignUp from "./Pages/SignUp.jsx";
 import Landing from "./Pages/Home/Landing.js";
 import Blogs from "./Pages/Blogs.jsx";
-// const loading = () => (
-//   <img
-//     style={{
-//       width: "100%",
-//       height: "100%",
-//       overflow: "hidden",
-//     }}
-//     alt="loader"
-//     src="https://icon-library.com/images/loading-icon-animated-gif/loading-icon-animated-gif-19.jpg"
-//   />
-// );
+
 function App() {
   return (
     <Provider store={store}>

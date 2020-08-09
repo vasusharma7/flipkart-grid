@@ -19,8 +19,8 @@ router.get("/getBlogsData", async (req, res) => {
 });
 
 router.get("/fetchCategory/:category", async (req, res) => {
-  const {category} = req.params;
-  console.log(category)
+  const { category } = req.params;
+  console.log(category);
   var options = {
     skip: 10,
     limit: 10,
@@ -28,11 +28,15 @@ router.get("/fetchCategory/:category", async (req, res) => {
   };
 
   const data = await new Promise((resolve, reject) => {
-    Data.find({ trending: true,clothing:category }, async function (err, results1) {
+    Data.find({ trending: true, clothing: category }, async function (
+      err,
+      results1
+    ) {
       if (err) res.status(400);
       var temp = [];
       for (let i = 0; i < 10; i++) {
         const random = Math.floor(Math.random() * results1.length);
+        // const random = i;
         temp.push(results1[random]);
         results1.splice(random, 1);
       }
@@ -41,12 +45,16 @@ router.get("/fetchCategory/:category", async (req, res) => {
         return b._doc["trending_score"] - a._doc["trending_score"];
       });
 
-      Data.find({ trending: false,clothing:category  }, function (err, results2) {
+      Data.find({ trending: false, clothing: category }, function (
+        err,
+        results2
+      ) {
         // console.log(results2);
         if (err) res.status(400);
         var temp = [];
         for (let i = 0; i < 10; i++) {
           const random = Math.floor(Math.random() * results2.length);
+          // const random = i;
           temp.push(results2[random]);
           results2.splice(random, 1);
         }
@@ -78,12 +86,26 @@ router.get("/fetch", async (req, res) => {
     Data.find({ trending: true }, async function (err, results1) {
       if (err) res.status(400);
       var temp = [];
+      // temp.push(results1[180]);
       for (let i = 0; i < 10; i++) {
         const random = Math.floor(Math.random() * results1.length);
+        // const random = i;
         temp.push(results1[random]);
+        console.log(random,results1[random]._doc["image"])
         results1.splice(random, 1);
       }
+      
+      // temp.splice(4,1);
+      // temp.splice(5,1);
+      // temp.splice(7,1);
+      // temp.splice(9,1);
+      // temp.splice(9,1);
+      // temp.splice(11,1);
+      // temp.splice(12,1);
+      // temp.splice(12,1);
+      // temp.splice(16,1);
       results1 = temp;
+
       results1.sort(function (a, b) {
         return b._doc["trending_score"] - a._doc["trending_score"];
       });
@@ -94,6 +116,7 @@ router.get("/fetch", async (req, res) => {
         var temp = [];
         for (let i = 0; i < 10; i++) {
           const random = Math.floor(Math.random() * results2.length);
+          // const random = i;
           temp.push(results2[random]);
           results2.splice(random, 1);
         }
