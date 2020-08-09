@@ -17,6 +17,16 @@ import Dashboard from "./dashboard.js";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import Category  from "./category";
 class Landing extends Component {
+  componentWillReceiveProps(){
+    if(!this.props.loading){
+
+  const el = document.querySelector(".loader-container");
+      if (el) {
+        el.remove();  // removing the spinner element        this.setState({ loading: false }); // showing the app      }
+    }
+    }
+  }
+
   render() {
     return (
       <>
@@ -46,7 +56,7 @@ const mapStateToProps = state => {
     loggedIn: state.loginReducer.loggedIn,
     //   error: state.loginReducer.error,
     notifications: state.notifications,
-    //   loading: state.loginReducer.loading,
+    loading: state.dataReducer.loading,
   };
 };
 
