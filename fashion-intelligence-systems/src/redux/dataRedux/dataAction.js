@@ -26,7 +26,7 @@ export const fetchCategory = category => {
     await axios
       .get(`${global.config.backendURL}/api/commons/fetchCategory/${category}`)
       .then(async res => {
-
+        await new Promise(r=>setTimeout(r,4000))
         dispatch(fetchSuccess(res.data));
 
       })
@@ -43,7 +43,7 @@ export const fetchData = data => {
     await axios
       .get(`${global.config.backendURL}/api/commons/fetch/`)
       .then(async res => {
-
+        await new Promise(r=>setTimeout(r,4000))
         dispatch(fetchSuccess(res.data));
       })
       .catch(err => {

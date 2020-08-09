@@ -13,9 +13,9 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import CardActions from "@material-ui/core/CardActions";
 import CardContent from "@material-ui/core/CardContent";
 import CardMedia from "@material-ui/core/CardMedia";
-import {Redirect} from "react-router-dom"
+import { Redirect } from "react-router-dom";
 import { useHistory } from "react-router";
-import {withRouter} from 'react-router-dom'
+import { withRouter } from "react-router-dom";
 const useStyles = makeStyles(theme => ({
   card: {
     maxWidth: 250,
@@ -43,32 +43,49 @@ const useStyles = makeStyles(theme => ({
 export class Category extends Component {
   constructor(props) {
     super(props);
-    console.clear()
-    console.log(this.props)
+    console.clear();
+    console.log(this.props);
 
     this.state = {
       category: this.props.match.params.category,
-      title:(this.props.match.params.category.charAt(0).toUpperCase()) + this.props.match.params.category.substr(1),
-      key:true
+      title:
+        this.props.match.params.category.charAt(0).toUpperCase() +
+        this.props.match.params.category.substr(1),
+      key: true,
     };
     this.props.fetchData(this.state.category);
   }
-  componentWillReceiveProps(nextProps){
-     if (nextProps.match.params.category !== this.props.match.params.category) {
-    //   this.setState({
-    //   category: this.props.match.params.category,
-    //   title:(this.props.match.params.category.charAt(0).toUpperCase()) + this.props.match.params.category.substr(1)
-    // });
-    // this.props.fetchData(this.state.category); 
-    // this.setState({key : !this.state.key})
-    window.location.reload()
-  }
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.match.params.category !== this.props.match.params.category) {
+      //   this.setState({
+      //   category: this.props.match.params.category,
+      //   title:(this.props.match.params.category.charAt(0).toUpperCase()) + this.props.match.params.category.substr(1)
+      // });
+      // this.props.fetchData(this.state.category);
+      // this.setState({key : !this.state.key})
+      window.location.reload();
+    }
   }
   nonTrending = () => {
     const { classes } = this.props;
-    console.log(this.props)
+    console.log(this.props);
     return (
       <>
+        {this.props.loading ? (
+          <div style={{}}>
+            <img
+              style={{
+                width: "100%",
+                height: "100%",
+                overflow: "hidden",
+              }}
+              alt="loader"
+              src="https://icon-library.com/images/loading-icon-animated-gif/loading-icon-animated-gif-19.jpg"
+            />
+          </div>
+        ) : (
+          <></>
+        )}
         <Grid
           container
           className={classes.cardLayout}
@@ -155,7 +172,7 @@ export class Category extends Component {
     // const history = useHistory();
     return (
       <>
-          <Grid
+        <Grid
           container
           className={classes.cardLayout}
           direction={"row"}
@@ -172,10 +189,9 @@ export class Category extends Component {
             const id = ele.image.substr(ele.image.indexOf("?") + 1);
 
             return (
-
               <Card
                 className={classes.card}
-                style={{ margin: "1%", height: "max-content"}}
+                style={{ margin: "1%", height: "max-content" }}
                 onClick={() => this.props.history.push(`/home/item/${ele._id}`)}
               >
                 <CardActionArea>
@@ -230,7 +246,6 @@ export class Category extends Component {
                 </Button>
               </CardActions> */}
               </Card>
-
             );
           })}
         </Grid>
@@ -239,8 +254,34 @@ export class Category extends Component {
   };
   render() {
     const { classes } = this.props;
+    this.props.loading
+      ? (document.getElementsByTagName("body")[0].style.overflow = "hidden")
+      : (document.getElementsByTagName("body")[0].style.overflow = "scroll");
     return (
       <>
+        {this.props.loading ? (
+          <div
+            style={{
+              backgroundColor: "#0e111f",
+              width: "100vw",
+              height: "100vh",
+              display: "flex",
+              // alignItems: "center",
+              justifyContent: "center",
+            }}
+          >
+            <img
+              style={{
+                maxWidth: "800",
+                maxHeight: "600",
+              }}
+              alt="loader"
+              src="https://file.mockplus.com/image/2018/04/943d662b-25c9-42d6-9fd2-cc36d2ffab76.gif"
+            />
+          </div>
+        ) : (
+          <></>
+        )}
         {/* <center style={{ marginTop: "2%", marginBottom: "1%" }}>
           <Typography alignJustify alignCenter variant="h4" type="h3">
             What's Trending ?
@@ -297,7 +338,7 @@ export class Category extends Component {
               md={12}
               style={{
                 display: "flex",
-                flexDirection:"row",
+                flexDirection: "row",
                 alignItems: "center",
                 justifyContent: "center",
               }}
@@ -306,7 +347,7 @@ export class Category extends Component {
                 align={"center"}
                 component="h4"
                 variant="h4"
-                style={{ marginBottom: "5%",marginTop:"5%" }}
+                style={{ marginBottom: "5%", marginTop: "5%" }}
               >
                 {this.state.title} Trending - Just In
               </Typography>
@@ -326,7 +367,7 @@ export class Category extends Component {
                 align={"center"}
                 component="h4"
                 variant="h4"
-                style={{ marginBottom: "5%",marginTop:"5%" }}
+                style={{ marginBottom: "5%", marginTop: "5%" }}
               >
                 {this.state.title} Lost Trend - Out Of Fashion
               </Typography>
@@ -360,7 +401,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchData: (category) => dispatch(action.fetchCategory(category)),
+    fetchData: category => dispatch(action.fetchCategory(category)),
   };
 };
 

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Suspense, lazy, Component } from "react";
 // import * as action from "../redux/registerRedux/registerAction";
 import { connect } from "react-redux";
 import Notifications from "react-notification-system-redux";
@@ -11,13 +11,28 @@ import {
   Switch,
 } from "react-router-dom";
 
+import { HTML5Backend } from "react-dnd-html5-backend";
 import Blogs from "../Blogs.jsx";
 import Model from "../Model.jsx";
 import Dashboard from "./dashboard";
-import Item from '../Item.jsx';
-import { HTML5Backend } from "react-dnd-html5-backend";
-import Category  from "./category";
+import Item from "../Item.jsx";
+import Category from "./category";
+// const Blogs = lazy(() => import("../Blogs")); // Lazy-loaded
+// const Model = lazy(() => import("../Model.jsx")); // Lazy-loaded
+// const Dashboard = lazy(() => import("./dashboard")); // Lazy-loaded
+// const Item = lazy(() => import("../Item.jsx")); // Lazy-loaded
+
 class Landing extends Component {
+  // componentWillReceiveProps(){
+  //   if(!this.props.loading){
+
+  // const el = document.querySelector(".loader-container");
+  //     if (el) {
+  //       el.remove();  // removing the spinner element        this.setState({ loading: false }); // showing the app      }
+  //   }
+  //   }
+  // }
+
   render() {
     return (
       <>
@@ -32,11 +47,14 @@ class Landing extends Component {
             path="/home/model"
             component={() => <Model backend={HTML5Backend} />}
           />
-          <Route path="/home/category/:category" render={props => <Category {...props} />} />
+          <Route
+            path="/home/category/:category"
+            render={props => <Category {...props} />}
+          />
           <Route path="/home/dashboard" component={() => <Dashboard />} />
           <Redirect from="/home" to="/home/dashboard" />
         </Switch>
-        <Footer/>
+        <Footer />
       </>
     );
   }
@@ -48,7 +66,7 @@ const mapStateToProps = state => {
     loggedIn: state.loginReducer.loggedIn,
     //   error: state.loginReducer.error,
     notifications: state.notifications,
-    //   loading: state.loginReducer.loading,
+    // loading: state.dataReducer.loading,
   };
 };
 
