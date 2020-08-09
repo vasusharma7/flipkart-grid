@@ -1,0 +1,43 @@
+.model-sample-trouser-img {
+  height: 150px;
+  padding: 2px 2px 2px 2px;
+  background-color: white;
+  border: 2px solid red;
+  border-radius: 5px;
+}
+.model-sample-tshirt-img {
+  height: 100px;
+}
+
+.model-area {
+  /*background-color: white;*/
+  background-image: url("../assets/modelresized.jpg");
+  background-repeat: no-repeat;
+  height: 600px;
+  width: 400px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*height: 100px;*/
+}
+.model-img {
+  width: 100%;
+}
+.model-area-shirt {
+  position: absolute;
+  height: 225px;
+  top: 85px;
+  left: 120px;
+}
+.model-area-trouser {
+  position: absolute;
+  height: 280px;
+  top: 264px;
+  left: 147px;
+}
+
+.model-area-short {
+  position: absolute;
+  height: 163px;
+  top: 258px;
+  left: 140px;
+}
